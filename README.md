@@ -37,19 +37,3 @@ A complete, modular algorithmic trading backtesting platform using Python and th
    ```bash
    python main.py
    ```
-
-## Final Report Template
-
-### Performance Metrics
-
-| Strategy | Total Return | CAGR | Annual Volatility | Sharpe Ratio | Sortino Ratio | Max Drawdown | Win Rate |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Buy & Hold | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] |
-| Trend Following | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] |
-| Mean Reversion | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] |
-| Custom Strategy | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] | [Value] |
-
-### Discussion of Results
-*Provide a brief analysis of the strategy performances here based on the metrics table above.*
-- **Winner:** (Identify which strategy performed the best based on absolute return or risk-adjusted return like Sharpe ratio).
-- **Observations:** (E.g., Mean Reversion suffered during a long trend, Trend Following outperformed in a bull market).
