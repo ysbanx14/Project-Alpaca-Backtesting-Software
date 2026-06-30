@@ -1,0 +1,7 @@
+pandas
+numpy
+matplotlib
+alpaca-py
+yfinance
+pandas-ta
+tabulate
