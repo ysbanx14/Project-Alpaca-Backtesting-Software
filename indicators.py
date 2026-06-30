@@ -17,6 +17,7 @@ def calculate_indicators(df):
 
     # 1. SMA (Trend) - 50 period
     df['SMA_50'] = ta.sma(df['close'], length=50)
+    df['SMA_200'] = ta.sma(df['close'], length=200)
 
     # 2. EMA (Trend) - 20 period and 50 period for custom strategy
     df['EMA_20'] = ta.ema(df['close'], length=20)

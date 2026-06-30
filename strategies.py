@@ -52,27 +52,34 @@ def strategy_2_mean_reversion(df):
 
 def strategy_3_custom(df):
     """
-    Strategy 3 (Custom Strategy):
-    EMA (Trend), RSI (Momentum), and OBV (Volume).
-    Buy when short EMA (20) > long EMA (50) AND RSI > 50 AND OBV is rising (OBV > 20-day SMA of OBV).
-    Sell when short EMA (20) < long EMA (50) OR RSI < 40.
+    Strategy 3 (Regime-Filtered Pullback - Tuned):
+    Combines Trend (200 SMA), Momentum (14 RSI), and Volume (OBV).
+    Buy when: Close > 200 SMA AND RSI < 55 AND OBV > 50-day OBV SMA.
+    Sell when: RSI > 70 OR Close < 200 SMA.
     """
+    import pandas as pd
+    
     signals = pd.Series(0, index=df.index)
     in_position = False
     
-    # Calculate OBV SMA for trend check
-    obv_sma = df['OBV'].rolling(window=20).mean()
+    # Lengthen the OBV SMA to 50 days so short pullbacks don't break the volume trend
+    obv_sma = df['OBV'].rolling(window=50).mean()
     
     for i in range(1, len(df)):
-        if (df['EMA_20'].iloc[i] > df['EMA_50'].iloc[i] and 
-            df['RSI_14'].iloc[i] > 50 and 
+        # Buy Condition
+        if (df['close'].iloc[i] > df['SMA_200'].iloc[i] and 
+            df['RSI_14'].iloc[i] < 55 and 
             df['OBV'].iloc[i] > obv_sma.iloc[i] and 
             not in_position):
             signals.iloc[i] = 1
             in_position = True
-        elif (df['EMA_20'].iloc[i] < df['EMA_50'].iloc[i] or df['RSI_14'].iloc[i] < 40) and in_position:
+            
+        # Sell Condition
+        elif (df['RSI_14'].iloc[i] > 70 or df['close'].iloc[i] < df['SMA_200'].iloc[i]) and in_position:
             signals.iloc[i] = 0
             in_position = False
+            
+        # Hold Condition
         else:
             signals.iloc[i] = 1 if in_position else 0
             
