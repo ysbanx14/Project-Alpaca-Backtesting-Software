@@ -41,7 +41,7 @@ def main():
         'Buy & Hold': buy_hold_signals,
         'Trend Following': s1_signals,
         'Mean Reversion': s2_signals,
-        'Regime Pullback Strategy (AI generated)': s3_signals,
+        'Custom Strategy': s3_signals,
         'Ascending Triangle': s4_signals
     }
     
@@ -64,7 +64,7 @@ def main():
     print("\nGenerating charts (close each window to proceed to the next chart)...")
     
     # Let's plot Price Chart for Strategy 3 as an example
-    plot_price_chart(df, results['Regime Pullback Strategy (AI generated)'], strategy_name="Regime Pullback Strategy (AI generated)")
+    plot_price_chart(df, results['Custom Strategy'], strategy_name="Custom Strategy")
     
     # Plot Equity Curves
     plot_equity_curves(results)

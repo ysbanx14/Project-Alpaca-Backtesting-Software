@@ -52,7 +52,7 @@ def strategy_2_mean_reversion(df):
 
 def strategy_3_custom(df):
     """
-    Strategy 3 (Regime-Filtered Pullback - Tuned):
+    Strategy 3 (Custom Strategy):
     Combines Trend (200 SMA), Momentum (14 RSI), and Volume (OBV).
     Buy when: Close > 200 SMA AND RSI < 55 AND OBV > 50-day OBV SMA.
     Sell when: RSI > 70 OR Close < 200 SMA.
